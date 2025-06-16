@@ -4,7 +4,7 @@ import React from 'react'
 const Feed = () => {
   return (
     <View className="flex-1 bg-black justify-center items-center">
-            <Text className="text-primary text-center text-5xl font-bold">Feed</Text>
+            <Text className="text-primary text-center text-4xl font-bold">Feed</Text>
     </View>
   )
 }

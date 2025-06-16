@@ -7,6 +7,11 @@ module.exports = {
       colors: {
         primary: "#00D4FF",
       },
+       fontFamily: {
+        sans: ['ui-sans-serif', 'system-ui'],
+        serif: ['ui-serif'],
+        mono: ['ui-monospace'],
+      },
     },
   },
   plugins: [],
