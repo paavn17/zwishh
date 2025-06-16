@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#00D4FF"
       },
       "edgeToEdgeEnabled": true
     },
@@ -27,10 +27,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "image": "./assets/images/icon.png",
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "imageWidth": 200,
+          "backgroundColor": "#00D4FF"
         }
       ],
       "expo-video",

@@ -9,7 +9,6 @@ export default function RootLayout() {
 
   return (
     <>
-      {/* Blue status bar background */}
       <View style={{ height: statusBarHeight, backgroundColor: '#00D4FF' }} />
       <SafeAreaView style={{ flex: 1, backgroundColor: '#00D4FF' }} edges={['left', 'right']}>
         <StatusBar style="light" translucent backgroundColor="#00D4FF" />

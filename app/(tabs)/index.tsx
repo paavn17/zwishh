@@ -20,26 +20,51 @@ interface CategoryButtonProps {
   textLeft: number;
 }
 
-// Reusable Category Button component
-const CategoryButton: React.FC<CategoryButtonProps> = ({ label, image, textLeft }) => (
-  <TouchableOpacity className="flex-1 mx-1">
-    <View className="rounded-2xl p-2 border-2 border-white flex-row items-center justify-between h-14 overflow-visible relative">
-      <Image
-        source={image}
-        className="w-11 h-16 absolute bottom-0 left-3"
-        resizeMode="cover"
-      />
-      <Text
-        className="text-white text-sm font-bold flex-1 text-center"
-        style={{
-          left: textLeft,
-        }}
-      >
-        {label}
-      </Text>
-    </View>
-  </TouchableOpacity>
-);
+// Reusable Category Button component with soft gradient background
+const CategoryButton: React.FC<CategoryButtonProps> = ({ label, image, textLeft }) => {
+  const getGradientColors = () => {
+    switch (label) {
+      case "Men":
+        return ["rgba(46,49,146,0.4)", "transparent"]; // soft blue
+      case "Women":
+        return ["rgba(212,20,90,0.4)", "transparent"]; // soft pink-red
+      case "All":
+      default:
+        return ["rgba(74,0,224,0.4)", "transparent"]; // soft purple
+    }
+  };
+
+  return (
+    <TouchableOpacity className="flex-1 mx-1">
+      <View className="rounded-2xl relative">
+        <LinearGradient
+          colors={getGradientColors()}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 0 }}
+          className="rounded-2xl overflow-hidden"
+        >
+          <View className="p-2 border-2 border-white flex-row items-center justify-center h-14 rounded-2xl">
+            <Text
+              className="text-white text-sm font-bold text-center"
+              style={{
+                left: textLeft,
+              }}
+            >
+              {label}
+            </Text>
+          </View>
+        </LinearGradient>
+
+        {/* Image positioned outside the overflow-hidden container */}
+        <Image
+          source={image}
+          className="w-12 h-16 absolute bottom-1 left-3"
+          resizeMode="cover"
+        />
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const Index: React.FC = () => {
   const [showAddressOptions, setShowAddressOptions] = useState(false);
@@ -62,7 +87,7 @@ const Index: React.FC = () => {
           <Home color="white" size={20} />
           <Text
             className="text-white text-lg font-semibold ml-2 mr-1"
-           onPress={() => setShowAddressOptions(!showAddressOptions)}
+            onPress={() => setShowAddressOptions(!showAddressOptions)}
           >
             Home
           </Text>
@@ -73,7 +98,7 @@ const Index: React.FC = () => {
 
         {/* Address Options Dropdown */}
         {showAddressOptions && (
-          <View className=" rounded-md p-3 mb-3">
+          <View className="rounded-md p-3 mb-3">
             <Text className="text-white font-semibold mb-2">Select Address:</Text>
             <TouchableOpacity className="mb-2">
               <Text className="text-white">Home - 156, 15th Flr, Maker Chambers</Text>
@@ -112,18 +137,18 @@ const Index: React.FC = () => {
         <View className="flex-row justify-between mb-6 -mt-4">
           <CategoryButton
             label="All"
-            image={require("../../assets/images/zwishh-social-1.png")}
+            image={require("../../assets/images/category-icons/zwishh-social-1.png")}
             textLeft={25}
           />
           <CategoryButton
             label="Men"
-            image={require("../../assets/images/zwishh-social-2.png")}
-            textLeft={17}
+            image={require("../../assets/images/category-icons/zwishh-social-2.png")}
+            textLeft={20}
           />
           <CategoryButton
             label="Women"
-            image={require("../../assets/images/zwishh-social-3.png")}
-            textLeft={20}
+            image={require("../../assets/images/category-icons/zwishh-social-3.png")}
+            textLeft={22}
           />
         </View>
 
